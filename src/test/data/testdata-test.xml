@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <PARENT ID="1" name="p1"/>
+
+<!--  not used -->
+  <child pname="p1" name="c1" />
+  <child pname="p1" name="c2" />
+</dataset>

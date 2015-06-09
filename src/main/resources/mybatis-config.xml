@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="callSettersOnNulls" value="true" />
+		<setting name="logImpl" value="LOG4J2"/>
+	</settings>
+
+	<environments default="h2">
+		<environment id="h2">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="org.h2.Driver" />
+				<property name="url" value="jdbc:h2:mem:test;INIT=runscript from 'src/test/h2/create.sql'" />
+			</dataSource>
+		</environment>
+		<environment id="derby">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+				<property name="url" value="jdbc:derby:memory:test;create=true" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="mapper.xml" />
+	</mappers>
+</configuration>

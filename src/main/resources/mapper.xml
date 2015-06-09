@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Sep 08 15:06:57 CEST 2014-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper">
+
+    <resultMap id="pbResultMap" type="de.rsiggi.mybatis.sample.ParentBean">
+        <result property="name" column="name"/>
+		<association property="client" javaType="de.rsiggi.mybatis.sample.ChildBean">
+			<association property="child" javaType="de.rsiggi.mybatis.sample.ChildBean">
+					<result property="name" column="null_value"/> <!--  yes I need this -->
+			</association>
+		</association>
+    </resultMap>
+
+    <select id="test" resultMap="pbResultMap" useCache="false">
+    	select p.name
+    	, NULL as null_value
+    	from parent p
+    </select>
+
+
+</mapper>
